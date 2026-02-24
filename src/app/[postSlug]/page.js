@@ -5,13 +5,14 @@ import BlogHero from '@/components/BlogHero';
 
 import styles from './postSlug.module.css';
 import { loadBlogPost } from '@/helpers/file-helpers';
+import { BLOG_TITLE } from '@/constants';
 
 export async function generateMetadata({ params }) {
     const { postSlug } = await params;
     const post = await loadBlogPost(postSlug);
 
     return {
-        title: post.frontmatter.title,
+        title: `${post.frontmatter.title} • ${BLOG_TITLE}`,
         description: post.frontmatter.abstract,
     }
 }
