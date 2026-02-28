@@ -21,19 +21,12 @@ export async function generateMetadata({ params }) {
 async function BlogPost({ params }) {
     const { postSlug } = await params;
     const post = await loadBlogPost(postSlug);
-    const components = {
-        pre: ({ children, ...delegated }) => (
-            <CodeSnippet {...delegated}>
-                { children}
-            </CodeSnippet>
-        )
-    }
 
     return (
         <article className={styles.wrapper}>
             <BlogHero {...post.frontmatter} />
             <div className={styles.page}>
-                <MDXRemote source={post.content} components={components} />
+                <MDXRemote source={post.content} components={{ pre: CodeSnippet }} />
             </div>
         </article>
     );
