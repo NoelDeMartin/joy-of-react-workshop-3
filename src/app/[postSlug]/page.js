@@ -6,9 +6,7 @@ import BlogHero from '@/components/BlogHero';
 import styles from './postSlug.module.css';
 import { loadBlogPost } from '@/helpers/file-helpers';
 import { BLOG_TITLE } from '@/constants';
-import CodeSnippet from '@/components/CodeSnippet';
-
-const DivisionGroupsDemo = React.lazy(() => import('@/components/DivisionGroupsDemo'));
+import mdxComponents from '@/helpers/mdx-components';
 
 export async function generateMetadata({ params }) {
     const { postSlug } = await params;
@@ -30,10 +28,7 @@ async function BlogPost({ params }) {
             <div className={styles.page}>
                 <MDXRemote
                     source={post.content}
-                    components={{
-                        pre: CodeSnippet,
-                        DivisionGroupsDemo,
-                    }}
+                    components={mdxComponents}
                 />
             </div>
         </article>
