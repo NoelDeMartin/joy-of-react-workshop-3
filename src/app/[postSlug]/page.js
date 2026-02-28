@@ -6,6 +6,7 @@ import BlogHero from '@/components/BlogHero';
 import styles from './postSlug.module.css';
 import { loadBlogPost } from '@/helpers/file-helpers';
 import { BLOG_TITLE } from '@/constants';
+import CodeSnippet from '@/components/CodeSnippet';
 
 export async function generateMetadata({ params }) {
     const { postSlug } = await params;
@@ -20,12 +21,19 @@ export async function generateMetadata({ params }) {
 async function BlogPost({ params }) {
     const { postSlug } = await params;
     const post = await loadBlogPost(postSlug);
+    const components = {
+        pre: ({ children, ...delegated }) => (
+            <CodeSnippet {...delegated}>
+                { children}
+            </CodeSnippet>
+        )
+    }
 
     return (
         <article className={styles.wrapper}>
             <BlogHero {...post.frontmatter} />
             <div className={styles.page}>
-                <MDXRemote source={post.content} />
+                <MDXRemote source={post.content} components={components} />
             </div>
         </article>
     );
