@@ -8,6 +8,8 @@ import { loadBlogPost } from '@/helpers/file-helpers';
 import { BLOG_TITLE } from '@/constants';
 import CodeSnippet from '@/components/CodeSnippet';
 
+const DivisionGroupsDemo = React.lazy(() => import('@/components/DivisionGroupsDemo'));
+
 export async function generateMetadata({ params }) {
     const { postSlug } = await params;
     const post = await loadBlogPost(postSlug);
@@ -26,7 +28,13 @@ async function BlogPost({ params }) {
         <article className={styles.wrapper}>
             <BlogHero {...post.frontmatter} />
             <div className={styles.page}>
-                <MDXRemote source={post.content} components={{ pre: CodeSnippet }} />
+                <MDXRemote
+                    source={post.content}
+                    components={{
+                        pre: CodeSnippet,
+                        DivisionGroupsDemo,
+                    }}
+                />
             </div>
         </article>
     );
