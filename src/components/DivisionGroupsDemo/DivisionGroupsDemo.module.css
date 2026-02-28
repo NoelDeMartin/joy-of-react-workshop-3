@@ -60,7 +60,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
   /* background: var(--color-gray-100); */
   border: 1px solid var(--color-gray-300);
   height: 64px;
@@ -82,4 +81,9 @@
   letter-spacing: 1px;
   transform: translateY(-100%);
   border-radius: 2px 2px 0px 0px;
+}
+.remainderItems {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 8px;
 }
