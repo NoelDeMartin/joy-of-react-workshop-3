@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import clsx from 'clsx';
+import { motion } from 'motion/react';
 
 import { range } from '@/utils';
 import Card from '@/components/Card';
@@ -63,8 +64,9 @@ function DivisionGroupsDemo({
             <div key={groupIndex} className={styles.group}>
               {range(numOfItemsPerGroup).map((index) => {
                 return (
-                  <div
-                    key={index}
+                  <motion.div
+                    layoutId={`${groupIndex * numOfItemsPerGroup + index}`}
+                    key={`${groupIndex * numOfItemsPerGroup + index}`}
                     className={styles.item}
                   />
                 );

@@ -7,6 +7,7 @@ import clsx from 'clsx';
 
 import { LIGHT_TOKENS, DARK_TOKENS } from '@/constants';
 
+import { MotionConfig } from 'motion/react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import './styles.css';
@@ -36,9 +37,11 @@ function RootLayout({ children }) {
       style={theme === 'light' ? LIGHT_TOKENS : DARK_TOKENS}
     >
       <body>
-        <Header theme={theme} />
-        <main>{children}</main>
-        <Footer />
+        <MotionConfig reducedMotion="user">
+            <Header theme={theme} />
+            <main>{children}</main>
+            <Footer />
+        </MotionConfig>
       </body>
     </html>
   );
