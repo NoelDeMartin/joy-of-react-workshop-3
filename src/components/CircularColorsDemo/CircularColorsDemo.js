@@ -82,7 +82,7 @@ function CircularColorsDemo() {
                 <div className={styles.actions}>
                     <button type="button" onClick={() => setRunning(!running)}>
                         {running ? <Pause /> : <Play />}
-                        <VisuallyHidden>Play</VisuallyHidden>
+                        <VisuallyHidden>{running ? "Pause" : "Play"}</VisuallyHidden>
                     </button>
                     <button type="button" onClick={() => (setTimeElapsed(0), setRunning(false))}>
                         <RotateCcw />
